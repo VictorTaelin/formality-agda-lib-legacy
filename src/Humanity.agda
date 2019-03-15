@@ -12,9 +12,6 @@ open import IO public
 open import Float public
 open import Int public
 
-App : Set
-App = Unit → IO Unit
-
 Lazy : ∀ (A : Set) → Set
 Lazy A = Unit → A
 
