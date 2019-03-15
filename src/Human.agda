@@ -9,6 +9,8 @@ open import List public
 open import Bool public
 open import String public
 open import IO public
+open import Float public
+open import Int public
 
 App : Set
 App = Unit → IO Unit
@@ -29,6 +31,8 @@ if false t f = f unit
 update-to : ∀ {A : Set} → Nat → A → (Nat → A → A) → A
 update-to zero    x fn = x
 update-to (suc i) x fn = update-to i (fn zero x) (λ i → fn (suc i))
+
+{-# COMPILE JS update-to = A => n => x => fn => { for (var i = 0, l = n.toJSValue(); i < l; ++i) x = fn(agdaRTS.primIntegerFromString(String(i)))(x); return x; } #-}
 
 syntax update-to m x (λ i → b) = update x for i to m with: b
 
