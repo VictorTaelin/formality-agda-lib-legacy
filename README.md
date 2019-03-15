@@ -1,6 +1,6 @@
 # Agda for Humans
 
-Exploring ideas to make Agda more practical and less scary to novices and tweaking it for efficient Agda-to-JS compilations.
+Exploring ideas to make Agda more less scary to newbies. Tweaking it for efficient JS compilations.
 
 ```
 # must disable the agda-stdlib by editing ~/.agda/defaults
