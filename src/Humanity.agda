@@ -1,4 +1,4 @@
-module Human where
+module Humanity where
 
 -- Use agda-prelude instead of agda-stdlib?
 
