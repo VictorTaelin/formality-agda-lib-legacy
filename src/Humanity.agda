@@ -28,18 +28,18 @@ if : ∀ {A : Set} → Bool → Lazy A → Lazy A → A
 if true  t f = t unit
 if false t f = f unit
 
-update-to : ∀ {A : Set} → Nat → A → (Nat → A → A) → A
-update-to zero    x fn = x
-update-to (suc i) x fn = update-to i (fn zero x) (λ i → fn (suc i))
+init-to : ∀ {A : Set} → Nat → A → (Nat → A → A) → A
+init-to zero    x fn = x
+init-to (suc i) x fn = init-to i (fn zero x) (λ i → fn (suc i))
 
-{-# COMPILE JS update-to = A => n => x => fn => { for (var i = 0, l = n.toJSValue(); i < l; ++i) x = fn(agdaRTS.primIntegerFromString(String(i)))(x); return x; } #-}
+{-# COMPILE JS init-to = A => n => x => fn => { for (var i = 0, l = n.toJSValue(); i < l; ++i) x = fn(agdaRTS.primIntegerFromString(String(i)))(x); return x; } #-}
 
-syntax update-to m x (λ i → b) = update x for i to m with: b
+syntax init-to m x (λ i → b) = init x for i to m do: b
 
-update-from-to : ∀ {A : Set} → Nat → A → Nat → (Nat → A → A) → A
-update-from-to n x m f = update-to (m - n) x (λ i x → f (n + i) x)
+init-from-to : ∀ {A : Set} → Nat → A → Nat → (Nat → A → A) → A
+init-from-to n x m f = init-to (m - n) x (λ i x → f (n + i) x)
 
-syntax update-from-to n x m (λ i → b) = update x for i from n to m with: b
+syntax init-from-to n x m (λ i → b) = init x for i from n to m do: b
 
 for-to : Nat → (Nat → IO Unit) → IO Unit
 for-to zero    act = return unit
@@ -61,3 +61,6 @@ show (suc n) = "S" ++ show n
 
 Program : Set
 Program = Lazy (IO Unit)
+
+_f+_ : Float → Float → Float
+_f+_ = primFloatPlus

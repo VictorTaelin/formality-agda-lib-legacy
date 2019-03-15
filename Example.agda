@@ -14,6 +14,11 @@ main _ = do
     (then: print "foo")
     (else: print "bar")
 
-  print (update "" for i to 3 with: λ x → "na" ++ x)
+  let num =
+        init 0.0
+        for i from 0 to 1000000 do:
+          λ result → result f+ 1.0
 
-  print (primShowFloat (update 0.0 for i to 1000000 with: (primFloatPlus 2.0)))
+  print (primShowFloat num)
+
+  -- print (primShowFloat (update 0.0 for i to 1000000 with: (primFloatPlus 2.0)))
