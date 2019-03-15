@@ -10,7 +10,7 @@ main _ = do
   for i from 0 to 10 do:
     print ("i: " ++ show i)
 
-  if true
+  if (2 == 2)
     (then: print "foo")
     (else: print "bar")
 
@@ -20,5 +20,3 @@ main _ = do
           λ result → result f+ 1.0
 
   print (primShowFloat num)
-
-  -- print (primShowFloat (update 0.0 for i to 1000000 with: (primFloatPlus 2.0)))
