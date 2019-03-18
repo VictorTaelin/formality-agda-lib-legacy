@@ -4,6 +4,6 @@ Exploring ideas to make Agda more less scary to newbies. Tweaking it for efficie
 
 ```
 # must disable the agda-stdlib by editing ~/.agda/defaults
-agda --js --compile-dir=node_modules -i src Example.agda
+agda --js --compile-dir=node_modules src/Example.agda
 node node_modules/jAgda.Example.js
 ```
