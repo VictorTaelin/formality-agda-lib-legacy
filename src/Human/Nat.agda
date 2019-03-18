@@ -1,6 +1,6 @@
-module Nat where
+module Human.Nat where
 
-open import Bool
+open import Human.Bool
 
 data Nat : Set where
   zero : Nat

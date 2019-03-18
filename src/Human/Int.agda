@@ -1,7 +1,7 @@
-module Int where
+module Human.Int where
 
-open import Nat
-open import String
+open import Human.Nat
+open import Human.String
 
 infix 8 pos
 

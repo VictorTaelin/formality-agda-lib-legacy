@@ -1,4 +1,4 @@
-module Bool where
+module Human.Bool where
 
 data Bool : Set where
   false true : Bool

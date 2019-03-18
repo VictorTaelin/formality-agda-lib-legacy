@@ -1,8 +1,8 @@
-module String where
+module Human.String where
 
-open import Bool
-open import List
-open import Char
+open import Human.Bool
+open import Human.List
+open import Human.Char
 
 postulate String : Set
 {-# BUILTIN STRING String #-}

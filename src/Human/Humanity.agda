@@ -1,16 +1,16 @@
-module Humanity where
+module Human.Humanity where
 
 -- Use agda-prelude instead of agda-stdlib?
 
-open import JS public
-open import Unit public
-open import Nat public
-open import List public
-open import Bool public
-open import String public
-open import IO public
-open import Float public
-open import Int public
+open import Human.JS public
+open import Human.Unit public
+open import Human.Nat public
+open import Human.List public
+open import Human.Bool public
+open import Human.String public
+open import Human.IO public
+open import Human.Float public
+open import Human.Int public
 
 Lazy : ∀ (A : Set) → Set
 Lazy A = Unit → A

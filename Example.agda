@@ -1,6 +1,6 @@
 module Example where
 
-open import Humanity
+open import Human.Humanity
 
 main : Program
 main _ = do

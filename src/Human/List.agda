@@ -1,4 +1,4 @@
-module List where
+module Human.List where
 
 infixr 5 _,_
 data List {a} (A : Set a) : Set a where
