@@ -1,3 +1,8 @@
-rm node_modules/*
-agda --js --compile-dir=node_modules -i src Example.agda
+# !/bin/bash
+# Runs the script in the current folder
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}"
+
+# Agda code to JavaScript
+agda --js --compile-dir=node_modules ./src/Example.agda
 node node_modules/jAgda.Example.js
