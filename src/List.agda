@@ -1,6 +1,7 @@
 module List where
 
 open import Nat
+open import Bool
 
 infixr 5 _,_
 data List {a} (A : Set a) : Set a where
@@ -19,3 +20,17 @@ foldr c n (x , xs) = c x (foldr c n xs)
 
 length : ∀ {A : Set} → List A → Nat
 length = foldr (λ a n → suc n) zero
+
+map : ∀ {A : Set} {B : Set} → (f : A → B) → List A → List B
+map f end      = end
+map f (x , xs) = (f x) , (map f xs)
+
+filter : {A : Set} → (A → Bool) → List A → List A
+filter p end     = end
+filter p (x , l) with p x
+... | true  = x , (filter p l)
+... | false = filter p l
+
+sum : List Nat → Nat
+sum end     = zero
+sum (x , l) = x + (sum l)
