@@ -1,8 +1,8 @@
-module Human.JS where
+module JS where
 
-open import Human.Unit
-open import Human.String
-open import Human.IO
+open import Unit
+open import String
+open import IO
 
 infixl 1 _>>=_
 

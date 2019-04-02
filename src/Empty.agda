@@ -1,4 +1,4 @@
-module Human.Empty where
+module Empty where
 
 data Empty : Set where
 

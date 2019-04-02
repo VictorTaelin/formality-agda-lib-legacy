@@ -1,4 +1,4 @@
-module Human.Unit where
+module Unit where
 
 -- Do I need a record and the built-in ⊤? Why?
 data Unit : Set where

@@ -1,9 +1,9 @@
-module Human.Float where
+module Float where
 
-open import Human.Bool
-open import Human.Nat
-open import Human.Int
-open import Human.String
+open import Bool
+open import Nat
+open import Int
+open import String
 
 postulate Float : Set
 {-# BUILTIN FLOAT Float #-}

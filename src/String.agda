@@ -1,9 +1,9 @@
-module Human.String where
+module String where
 
-open import Human.Bool
-open import Human.List renaming ( length to llength )
-open import Human.Char
-open import Human.Nat
+open import Bool
+open import List renaming ( length to llength )
+open import Char
+open import Nat
 
 postulate String : Set
 {-# BUILTIN STRING String #-}
@@ -22,13 +22,3 @@ primitive
 {-# COMPILE JS primStringEquality = function(x) { return function(y) { return x===y; }; } #-}
 {-# COMPILE JS primShowChar = function(x) { return JSON.stringify(x); } #-}
 {-# COMPILE JS primShowString = function(x) { return JSON.stringify(x); } #-}
-
-toList : String → List Char
-toList = primStringToList
-
-{-# COMPILE JS primStringToList = function(x) { return x.split(""); } #-}
-
-slength : String → Nat
-slength s = llength (toList s)
-
-{-# COMPILE JS slength = function(s) { return s.length; } #-}

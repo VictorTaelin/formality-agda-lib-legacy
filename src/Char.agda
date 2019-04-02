@@ -1,7 +1,7 @@
-module Human.Char where
+module Char where
 
-open import Human.Nat
-open import Human.Bool
+open import Nat
+open import Bool
 
 postulate Char : Set
 {-# BUILTIN CHAR Char #-}

@@ -1,16 +1,16 @@
-module Human.Humanity where
+module Base where
 
 -- Use agda-prelude instead of agda-stdlib?
 
-open import Human.JS public
-open import Human.Unit public
-open import Human.Nat public
-open import Human.List public
-open import Human.Bool public
-open import Human.String public
-open import Human.IO public
-open import Human.Float public
-open import Human.Int public
+open import JS public
+open import Unit public
+open import Nat public
+open import List public
+open import Bool public
+open import String public
+open import IO public
+open import Float public
+open import Int public
 
 Lazy : ∀ (A : Set) → Set
 Lazy A = Unit → A
@@ -25,11 +25,21 @@ if : ∀ {A : Set} → Bool → Lazy A → Lazy A → A
 if true  t f = t unit
 if false t f = f unit
 
+{-# COMPILE JS if = A => c => t => f => (c ? t() : f()) #-}
+
 init-to : ∀ {A : Set} → Nat → A → (Nat → A → A) → A
 init-to zero    x fn = x
 init-to (suc i) x fn = init-to i (fn zero x) (λ i → fn (suc i))
 
 {-# COMPILE JS init-to = A => n => x => fn => { for (var i = 0, l = n.toJSValue(); i < l; ++i) x = fn(agdaRTS.primIntegerFromString(String(i)))(x); return x; } #-}
+
+{-# TERMINATING #-}
+init-to-f : ∀ {A : Set} → Float → A → (Float → A → A) → A
+init-to-f 0.0  x fn = x 
+init-to-f i    x fn = init-to-f (primFloatMinus i 1.0) (fn 0.0 x) (λ i → fn (primFloatPlus i 1.0))
+
+foo : Nat
+foo = init-to-f 10.3 0 (λ f i → suc i)
 
 syntax init-to m x (λ i → b) = init x for i to m do: b
 

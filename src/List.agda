@@ -1,6 +1,6 @@
-module Human.List where
+module List where
 
-open import Human.Nat
+open import Nat
 
 infixr 5 _,_
 data List {a} (A : Set a) : Set a where
